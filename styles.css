@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'SuperMarioFont';
+    src: url('texto/MarioWorldPixelColor-3zBwX.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('img/super-mario-background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'SuperMarioFont', sans-serif;
+    position: relative;
+    backdrop-filter: blur(2px); 
+}
+
+h1 {
+    font-size: 5vw;
+    color: #ffffff;
+    opacity: 0;
+    text-shadow: 9px 9px 9px #000000; 
+    animation: tadaAnimation 1s ease-in-out 2s forwards, fadeInAnimation 1s ease-in-out 2s forwards;
+}
+
+@keyframes tadaAnimation {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%, 20% {
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%, 50%, 70%, 90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%, 60%, 80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#mario-gif {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20vw; 
+    animation: slideJumpAndDescend 4s linear forwards;
+    z-index: 1;
+}
+
+@keyframes slideJumpAndDescend {
+    0%, 25% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(30vw) translateY(-30vw);
+    }
+
+    75% {
+        transform: translateX(50vw) translateY(0);
+    }
+
+    100% {
+        transform: translateX(100vw) translateY(0);
+    }
+}
+
+
+#star {
+    position: absolute;
+    bottom: 80%;
+    left: 40%;
+    width: 5vw;
+    transform: translateX(-70%);
+    opacity: 0;
+    animation: showStar 1s ease-in-out 2s forwards, bounceStar 0.5s ease-in-out 2s infinite alternate;
+    z-index: 2;
+}
+
+@keyframes showStar {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceStar {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100px);
+    }
+}
